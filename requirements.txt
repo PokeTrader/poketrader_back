@@ -6,3 +6,4 @@ Flask-JWT-Extended==3.25.0
 Flask-Bcrypt==0.7.1
 flask-marshmallow==0.14.0
 marshmallow-sqlalchemy==0.24.1
+requests==2.25.1

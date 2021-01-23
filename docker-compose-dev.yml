@@ -16,6 +16,7 @@ services:
       - DATABASE_TEST_URL=${DATABASE_TEST_URL}
       - JWT_EXPIRATION=1
       - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - POKEAPI_BASE_URL=${POKEAPI_BASE_URL}
     depends_on:
         - db
   db:
