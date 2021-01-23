@@ -1,7 +1,8 @@
 from flask import Flask
 from flask_testing import TestCase
 
-from project import db, ping
+from project import db
+from project.api.users.routes import users_blueprint
 
 
 class BaseTestCase(TestCase):
@@ -12,7 +13,7 @@ class BaseTestCase(TestCase):
 
         db.init_app(app)
 
-        app.add_url_rule('/api/ping', 'ping', ping)
+        app.register_blueprint(users_blueprint)
 
         return app
     
