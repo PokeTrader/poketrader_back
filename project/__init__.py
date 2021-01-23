@@ -26,8 +26,13 @@ jwt.init_app(app)
 
 from project.api.users.routes import users_blueprint
 from project.api.pokemons.routes import pokemons_blueprint
+from project.api.trades.routes import trades_blueprint
 app.register_blueprint(users_blueprint)
 app.register_blueprint(pokemons_blueprint)
+app.register_blueprint(trades_blueprint)
+
+from project.api.users.models import User
+from project.api.trades.models import Trade, TradeGroup, TradePokemon
 
 @app.cli.command('test')
 def test():
