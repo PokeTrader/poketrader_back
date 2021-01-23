@@ -9,8 +9,8 @@ from marshmallow.exceptions import ValidationError
 
 from project import db
 from .models import User
-from .schemas import UserRegisterSchema
-from .services import create_user
+from .schemas import UserRegisterSchema, UserSigninSchema
+from .services import create_user, authenticate
 
 
 users_blueprint = Blueprint('users', __name__)
@@ -21,14 +21,32 @@ def post_register():
     schema = UserRegisterSchema()
 
     try:
-        user = schema.load(post_data.get('user'))
+        user_schema = schema.load(post_data.get('user'))
     except ValidationError as e:
         return jsonify({'errors': e.normalized_messages()}), 400
-    
+
     try:
-        create_user(post_data.get('user'))
+        create_user(user_schema)
     except (IntegrityError, FlushError) as e:
         return jsonify({'errors': 'Username already exists.'}), 400
     
+    token = authenticate(user_schema)
+    return jsonify({'success': True, 'token': token}), 201
 
-    return jsonify({'success': True}), 201
+
+@users_blueprint.route('/api/users/signin', methods=['POST'])
+def post_signin():
+    post_data = request.get_json()
+    schema = UserSigninSchema()
+
+
+    try:
+        user_schema = schema.load(post_data.get('user'))
+    except ValidationError as e:
+        return jsonify({'errors': e.normalized_messages()}), 400
+
+    token = authenticate(user_schema)
+    if not token:
+        return jsonify({'errors': 'Invalid username/password combination'}), 401
+
+    return jsonify({'success': True, 'token': token}), 201

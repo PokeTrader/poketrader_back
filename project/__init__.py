@@ -3,6 +3,7 @@ import unittest
 
 from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
 from flask_marshmallow import Marshmallow
 
@@ -10,6 +11,7 @@ from flask_marshmallow import Marshmallow
 db = SQLAlchemy()
 migrate = Migrate()
 ma = Marshmallow()
+jwt = JWTManager()
 
 
 app_settings = os.getenv('APP_SETTINGS')
@@ -19,6 +21,7 @@ app.config.from_object(app_settings)
 db.init_app(app)
 migrate.init_app(app, db)
 ma.init_app(app)
+jwt.init_app(app)
 
 
 from project.api.users.routes import users_blueprint

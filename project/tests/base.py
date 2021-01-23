@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_testing import TestCase
 
-from project import db
+from project import db, jwt
 from project.api.users.routes import users_blueprint
 
 
@@ -12,6 +12,7 @@ class BaseTestCase(TestCase):
         app.config.from_object('project.config.TestingConfig')
 
         db.init_app(app)
+        jwt.init_app(app)
 
         app.register_blueprint(users_blueprint)
 
