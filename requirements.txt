@@ -1,0 +1,4 @@
+Flask==1.1.2
+Flask-Migrate==2.6.0
+psycopg2==2.8.6
+Flask-Testing==0.8.1
