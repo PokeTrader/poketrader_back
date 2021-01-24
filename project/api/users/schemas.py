@@ -1,5 +1,4 @@
 from project import ma
-from .models import User
 from marshmallow import fields
 from marshmallow import validate
 

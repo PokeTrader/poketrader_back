@@ -8,7 +8,7 @@ class Trade(db.Model):
 
     user_id = db.Column(db.String(80), db.ForeignKey('user.username'))
     user = db.relationship(
-        "Users",
+        "User",
         cascade="all, delete",
         back_populates="trades"
     )

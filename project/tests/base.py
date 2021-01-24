@@ -3,6 +3,7 @@ from flask_testing import TestCase
 
 from project import db, jwt
 from project.api.users.routes import users_blueprint
+from project.api.trades.routes import trades_blueprint
 
 
 class BaseTestCase(TestCase):
@@ -15,6 +16,7 @@ class BaseTestCase(TestCase):
         jwt.init_app(app)
 
         app.register_blueprint(users_blueprint)
+        app.register_blueprint(trades_blueprint)
 
         return app
     
