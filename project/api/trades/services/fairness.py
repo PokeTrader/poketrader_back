@@ -1,4 +1,4 @@
-from .params import ExpMargins, ExpThresholds
+from ..params import ExpMargins, ExpThresholds
 
 
 def __set_margin(group_exp):
