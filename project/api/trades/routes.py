@@ -62,4 +62,8 @@ def get_trades():
 def get_trade_by_id(id):
     username = get_jwt_identity()
     trade = fetch_trade_by_id(id, username)
-    return jsonify({'trade': trade}), 200
+
+    if trade:
+        return jsonify({'trade': trade}), 200
+
+    return jsonify({'errors': 'trade not found'}), 404

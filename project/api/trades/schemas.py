@@ -18,4 +18,8 @@ class TradeGroupSchema(ma.Schema):
 
 class TradeSchema(ma.Schema):
     is_fair = fields.Boolean(data_key='isFair')
-    trade_groups = fields.List(fields.Nested(TradeGroupSchema), data_key='tradeGroups')
+    trade_groups = fields.List(
+        fields.Nested(TradeGroupSchema),
+        data_key='tradeGroups',
+        validate=[validate.Length(equal=2)]
+    )

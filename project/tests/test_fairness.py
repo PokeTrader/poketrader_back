@@ -1,15 +1,7 @@
 from project.tests.base import BaseTestCase
-from project.api.users.models import User
-from flask_jwt_extended import create_access_token
+
 
 class TradeFairnessTest(BaseTestCase):
-    def create_token(self):
-        token = create_access_token(identity='someuser')
-        headers = {
-            'Authorization': 'Bearer %s' % token
-        }
-        return headers
-
     def test_close_exp_groups_are_considered_fair(self):
         token = self.create_token()
 
