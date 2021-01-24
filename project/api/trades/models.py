@@ -36,7 +36,8 @@ class TradePokemon(db.Model):
     __tablename__ = "trade_pokemon"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    number = db.Column(db.Integer)
+    name = db.Column(db.String(40))
+    sprite_url = db.Column(db.String(160))
 
     trade_group_id = db.Column(db.Integer, db.ForeignKey('trade_group.id'))
     trade_group = db.relationship(
