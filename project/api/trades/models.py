@@ -15,6 +15,20 @@ class Trade(db.Model):
 
     trade_groups = db.relationship("TradeGroup", back_populates="trade")
 
+    def to_json(self, full=False):
+        if full:
+            return {
+                'id': self.id,
+                'isFair': self.is_fair,
+                'groups': [group.to_json() for group in self.trade_groups]
+            }
+
+        return {
+            'id': self.id,
+            'isFair': self.is_fair,
+            'groups': [len(group.pokemons) for group in self.trade_groups]
+        }
+
 
 class TradeGroup(db.Model):
     __tablename__ = "trade_group"
@@ -31,6 +45,13 @@ class TradeGroup(db.Model):
 
     pokemons = db.relationship("TradePokemon", back_populates="trade_group")
 
+    def to_json(self):
+        return {
+            'id': self.id,
+            'wasBenefitted': self.was_benefitted,
+            'pokemons': [pokemon.to_json() for pokemon in self.pokemons]
+        }
+
 
 class TradePokemon(db.Model):
     __tablename__ = "trade_pokemon"
@@ -45,3 +66,10 @@ class TradePokemon(db.Model):
         cascade="all, delete",
         back_populates="pokemons"
     )
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'spriteUrl': self.sprite_url
+        }

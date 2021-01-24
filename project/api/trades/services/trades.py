@@ -36,4 +36,13 @@ def save_trade(trade_data, user_id):
     db.session.commit()
     return trade
 
+def fetch_trades_by_user(user_id):
+    trades = Trade.query.filter_by(user_id=user_id).all()
+    return [trade.to_json() for trade in trades]
 
+
+def fetch_trade_by_id(trade_id, user_id):
+    trade = Trade.query.filter_by(user_id=user_id, id=trade_id).first()
+    if trade:
+        return trade.to_json(full=True)
+    return None

@@ -9,7 +9,7 @@ from marshmallow.exceptions import ValidationError
 
 from .schemas import TradeFairnessSchema, TradeSchema
 from .services.fairness import calculate_fairness
-from .services.trades import save_trade
+from .services.trades import save_trade, fetch_trades_by_user, fetch_trade_by_id
 
 trades_blueprint = Blueprint('trades', __name__)
 
@@ -50,10 +50,16 @@ def post_trade():
 
 
 @trades_blueprint.route('/api/trades', methods=['GET'])
+@jwt_required
 def get_trades():
-    return jsonify({}), 200
+    username = get_jwt_identity()
+    trades = fetch_trades_by_user(username)
+    return jsonify({'trades': trades}), 200
 
 
 @trades_blueprint.route('/api/trades/<id>', methods=['GET'])
+@jwt_required
 def get_trade_by_id(id):
-    return jsonify({}), 200
+    username = get_jwt_identity()
+    trade = fetch_trade_by_id(id, username)
+    return jsonify({'trade': trade}), 200
