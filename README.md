@@ -2,9 +2,12 @@
 
 Backend para o simulador de trocas de Pokémons. O sistema avalia possíveis trocas
 entre treinadores, informando se a mesma é justa ou não, a partir do valor de
-`base experience` de cada Pokémon existente na troca. Os dados de uma troca
+`base experience` de cada Pokémon existente na troca. Os dados de uma simulação
 podem ser armazenados no sistema, permitindo visualização posterior.
 
+## Acessando o projeto
+
+O backend está disponível em [https://poketrader-back.herokuapp.com]().
 ## Endpoints
 
 * **POST** - /api/users/register - Cadastra um novo usuário.
@@ -18,6 +21,8 @@ podem ser armazenados no sistema, permitindo visualização posterior.
 ## Instalação
 
 É necessário ter o Docker e docker-compose instalados.
+
+O arquivo `.env.sample` demonstra as variáveis de ambiente do projeto. O mesmo pode servir de base para a criação do `.env`, que é ignorado pelo Git e deve conter os valores reais.
 
 Para executar o projeto, rodar o comando `docker-compose -f docker-compose-dev.yml up`.
 
