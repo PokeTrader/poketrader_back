@@ -38,7 +38,7 @@ def save_trade(trade_data, user_id):
     return trade
 
 def fetch_trades_by_user(user_id):
-    trades = Trade.query.filter_by(user_id=user_id).all()
+    trades = Trade.query.filter_by(user_id=user_id).order_by(Trade.id.desc()).all()
     return [trade.to_json() for trade in trades]
 
 

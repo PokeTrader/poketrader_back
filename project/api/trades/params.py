@@ -7,7 +7,7 @@ class ExpThresholds(Enum):
     High = 1500
 
 class ExpMargins(Enum):
-    Minimum = 10
+    Minimum = 20
     Low = 50
     Medium = 75
     High = 100
