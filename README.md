@@ -7,7 +7,7 @@ podem ser armazenados no sistema, permitindo visualização posterior.
 
 ## Acessando o projeto
 
-O backend está disponível em [https://poketrader-back.herokuapp.com]().
+O backend está disponível em [https://poketrader-back.herokuapp.com](https://poketrader-back.herokuapp.com).
 ## Endpoints
 
 * **POST** - /api/users/register - Cadastra um novo usuário.
