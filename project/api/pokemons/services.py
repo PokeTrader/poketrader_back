@@ -10,7 +10,7 @@ def fetch_pokemon(name):
         return {
             'id': data['id'],
             'name': data['name'],
-            'base_exp': data['base_experience'],
+            'baseExp': data['base_experience'],
             'sprite': data['sprites'].get('front_default')
         }
     else:

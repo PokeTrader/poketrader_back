@@ -11,6 +11,7 @@ class TradeFairnessSchema(ma.Schema):
 
 class TradePokemonSchema(ma.Schema):
     name = fields.Str(required=True)
+    base_exp = fields.Integer(required=True, data_key="baseExp")
     sprite_url = fields.Str(data_key='sprite')
 
     class Meta:

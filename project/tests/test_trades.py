@@ -12,6 +12,7 @@ class TradeFairnessTest(BaseTestCase):
                     'pokemons': [
                         {
                             'name': 'audino',
+                            'baseExp': 300,
                             'spriteUrl': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/531.png'
                         }
                     ]
@@ -21,14 +22,17 @@ class TradeFairnessTest(BaseTestCase):
                     'pokemons': [
                         {
                             'name': 'gengar',
+                            'baseExp': 90,
                             'spriteUrl': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png'
                         },
                         {
                             'name': 'kirlia',
+                            'baseExp': 90,
                             'spriteUrl': 'https://raw.githubuserco…/sprites/pokemon/281.png'
                         },
                         {
                             'name': 'rattata',
+                            'baseExp': 30,
                             'spriteUrl': ''
                         }
                     ]

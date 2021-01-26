@@ -4,6 +4,7 @@ from ..models import Trade, TradeGroup, TradePokemon, db
 def __save_trade_pokemon(trade_pokemon_data, trade_group_id):
     pokemon = TradePokemon()
     pokemon.name = trade_pokemon_data['name']
+    pokemon.base_exp = trade_pokemon_data['base_exp']
     pokemon.sprite_url = trade_pokemon_data.get('sprite_url')
     pokemon.trade_group_id = trade_group_id
 

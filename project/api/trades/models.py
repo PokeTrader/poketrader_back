@@ -58,6 +58,7 @@ class TradePokemon(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(40))
+    base_exp = db.Column(db.Integer)
     sprite_url = db.Column(db.String(160))
 
     trade_group_id = db.Column(db.Integer, db.ForeignKey('trade_group.id'))
@@ -71,5 +72,6 @@ class TradePokemon(db.Model):
         return {
             'id': self.id,
             'name': self.name,
+            'baseExp': self.base_exp,
             'sprite': self.sprite_url
         }
