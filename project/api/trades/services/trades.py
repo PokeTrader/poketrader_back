@@ -11,8 +11,9 @@ def __save_trade_pokemon(trade_pokemon_data, trade_group_id):
 
 
 def __save_trade_group(trade_group_data, trade_id):
+    print(trade_group_data)
     trade_group = TradeGroup()
-    trade_group.was_benefitted = trade_group_data.get('wasBenefitted')
+    trade_group.was_benefitted = trade_group_data.get('was_benefitted')
     trade_group.trade_id = trade_id
 
     db.session.add(trade_group)

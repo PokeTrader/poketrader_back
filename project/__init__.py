@@ -2,6 +2,8 @@ import os
 import unittest
 
 from flask import Flask, jsonify
+from flask_bcrypt import Bcrypt
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
@@ -11,6 +13,7 @@ from flask_marshmallow import Marshmallow
 db = SQLAlchemy()
 migrate = Migrate()
 ma = Marshmallow()
+bcrypt = Bcrypt()
 jwt = JWTManager()
 
 
@@ -21,8 +24,10 @@ app.config.from_object(app_settings)
 db.init_app(app)
 migrate.init_app(app, db)
 ma.init_app(app)
+bcrypt.init_app(app)
 jwt.init_app(app)
 
+CORS(app)
 
 from project.api.users.routes import users_blueprint
 from project.api.pokemons.routes import pokemons_blueprint

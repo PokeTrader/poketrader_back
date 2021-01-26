@@ -19,8 +19,8 @@ def get_trade_fairness():
     schema = TradeFairnessSchema()
 
     params = {
-        'group_one_exp': request.args.get('group_one'),
-        'group_two_exp': request.args.get('group_two'),
+        'group_one_exp': request.args.get('groupOneExp'),
+        'group_two_exp': request.args.get('groupTwoExp'),
     }
 
     try:

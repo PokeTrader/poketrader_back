@@ -1,6 +1,7 @@
 from project import ma
 from marshmallow import fields
 from marshmallow import validate
+from marshmallow import EXCLUDE
 
 
 class TradeFairnessSchema(ma.Schema):
@@ -10,7 +11,10 @@ class TradeFairnessSchema(ma.Schema):
 
 class TradePokemonSchema(ma.Schema):
     name = fields.Str(required=True)
-    sprite_url = fields.Str(data_key='spriteUrl')
+    sprite_url = fields.Str(data_key='sprite')
+
+    class Meta:
+        unknown = EXCLUDE
 
 class TradeGroupSchema(ma.Schema):
     was_benefitted = fields.Boolean(data_key='wasBenefitted')

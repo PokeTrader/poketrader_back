@@ -23,7 +23,11 @@ def post_register():
     try:
         user_schema = schema.load(post_data.get('user'))
     except ValidationError as e:
-        return jsonify({'errors': e.normalized_messages()}), 400
+        return jsonify({
+            'errors': 'Confira os dados e tente novamente.\
+                A senha deve ter no mínimo 6 caracteres. \
+                O nome de usuário deve ter no mínimo 4 caracteres.'
+            }), 400
 
     try:
         create_user(user_schema)
@@ -43,10 +47,10 @@ def post_signin():
     try:
         user_schema = schema.load(post_data.get('user'))
     except ValidationError as e:
-        return jsonify({'errors': e.normalized_messages()}), 400
+        return jsonify({'errors': 'Usuário ou senha incorretos'}), 400
 
     token = authenticate(user_schema)
     if not token:
-        return jsonify({'errors': 'Invalid username/password combination'}), 401
+        return jsonify({'errors': 'Usuário ou senha incorretos.'}), 401
 
     return jsonify({'success': True, 'token': token}), 201

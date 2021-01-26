@@ -71,5 +71,5 @@ class TradePokemon(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'spriteUrl': self.sprite_url
+            'sprite': self.sprite_url
         }
